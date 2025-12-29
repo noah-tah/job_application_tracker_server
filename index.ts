@@ -1,13 +1,12 @@
 import { prisma } from './lib/prisma'
 
 async function main() {
-    const user = await prisma.user.create({
-        data: {
-            name: 'Alice',
-            email: 'alice@prisma.io',
+    const userWithPosts = await prisma.user.findMany({
+        include: {
+            posts: true,
         },
     })
-    console.log(user)
+    console.log(userWithPosts, { depth: null })
 }
 
 main()
