@@ -8,11 +8,22 @@ datasource db {
 }
 
 model JobApplication {
-  id          String       @id @default(uuid)
+  id          String       @id @default(uuid())
   company     String
   role        String
   job_url     String
   dateApplied DateTime     @default(now())
+  status      AppStatus    @default(Applied)
+  notes       String?
+  updatedAt   DateTime     @updatedAt
+}
+
+enum AppStatus {
+  Applied
+  Interviewing
+  Offer
+  Rejected
+  FollowUp
 }
 
 model User {
