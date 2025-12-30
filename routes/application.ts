@@ -51,4 +51,8 @@ router.delete('/applications/:id', async (req, res) => {
     }
 });
 
+router.get('/test', async (req, res) => {
+    res.json({ message: 'Hello, world!' });
+});
+
 export default router;
