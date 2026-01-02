@@ -9,8 +9,9 @@ router.get('/applications', async (req, res) => {
         const applications = await prisma.jobApplication.findMany({
             orderBy: { dateApplied: 'desc' }
         });
-        res.json(applications);
+        res.status(200).json(applications);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: 'Failed to get applications' });
     }
 });
